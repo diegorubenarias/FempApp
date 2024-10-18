@@ -9,10 +9,8 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
   private apURL = environment.SERVER_API;
-
   private http = inject(HttpClient);
 
-  constructor() { }
 
   public login(email: string, password: string): Observable<any>{
     return this.http.post(`${this.apURL}/login`, {
