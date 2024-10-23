@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root'
 })
 export class RegistroService {
-
+ 
 
   private apURL = environment.SERVER_API;
   private http = inject(HttpClient);

@@ -1,33 +1,16 @@
 .login-card {
-    display: flex;
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%) ;
     align-items: center;
-    flex-direction: column;
-    align-content: center;
-    max-width: 400px;
-    padding: 10px;
-    margin: 170px;
     background-color: #e3e8e8 ;
-  }
-
-  .contentLogin {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-  }
-
-  .login-form ng-untouched ng-pristine ng-invalid{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    align-content: center;
-  }
-  .mat-mdc-card-content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    align-content: center;
-  }
+  }  
   
-  .logo-header-image {
-    background-image: url('../../../assets/logos/MARCA\ FEMPA\ 3.png');
-    background-size: cover;
+  .cardImg{
+    width: auto;
+    padding: 16px 16px 0;
   }

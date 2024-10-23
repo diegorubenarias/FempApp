@@ -5,7 +5,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RegistroService } from '../../services/registro.service';
 
 
 @Component({
@@ -17,7 +18,9 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -27,6 +30,7 @@ export class LoginComponent {
   private loginService = inject(LoginService);
   private router = inject (Router);
   private fb = inject(FormBuilder);
+  private regService = inject(RegistroService);
 
   public form!: FormGroup;
 
