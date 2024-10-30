@@ -1,26 +1,88 @@
 <div class="regContainer">
-    <mat-card class="reg-card" appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="logo-header-image"></div>
-        <mat-card-title>
-          <img class="cardImg" mat-card-md-image src="icons/MARCA FEMPA PA2.png" alt="Photo of logo">
-        </mat-card-title>
-        <mat-card-subtitle>Por favor complete los datos</mat-card-subtitle>
-      </mat-card-header>
-      
-      <mat-card-content>
+  <mat-card class="reg-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="logo-header-image"></div>
+      <mat-card-title>
+        <img class="cardImg" mat-card-md-image src="icons/MARCAFEMPAPA2.png" alt="Photo of logo">
+        Bienvenida
+      </mat-card-title>
+      <mat-card-subtitle>Ahora corroboremos tu DNI</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" class="reg-form">
+        <mat-form-field class="example-full-width">
+          <mat-label for="nombre">Por favor ingresalo acá</mat-label>
+          <input id="dni" type="text" matInput formControlName="dni" placeholder="12345678">
+        </mat-form-field>
+      </form>
+      <mat-card-actions>
+        <section>
+          <button mat-flat-button (click)="buscar()">Buscar</button>
+        </section>
+      </mat-card-actions>
+      @if(empadronada){
+        <div *ngIf="empadronada" >
+          <mat-card class="example-card" appearance="outlined">
+            <mat-card-header>
+              <mat-card-title>Vos sos vos?</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-list>
+                <mat-list-item>{{pers?.nombreYApellido}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.documentoN}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.funcion}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.club}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.categoria}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.domicilio}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>{{pers?.tipoLicencia}}</mat-list-item>
+              </mat-list>         
+              <div>
+               <form [formGroup]="formFast">
+                <mat-form-field class="example-full-width">
+                  <mat-label for="email">Email</mat-label>
+                  <input id="email" type="email" matInput formControlName="email" placeholder="fempa@fempa.com.ar">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label for="password">Contraseña</mat-label>
+                  <input id="password" type="password" matInput formControlName="password" placeholder="Ingresa una contraseña">
+                </mat-form-field>
+                </form>
+              </div>
+            </mat-card-content>
+            <mat-card-footer class="example-card-footer">
+              <p>Si es así, por favor elije usuario y contraseña</p>
+              <mat-card-actions>
+                <section>
+                  <button mat-flat-button (click)="guardarFast()">Registrarme</button>
+                </section>
+                <button mat-button routerLink="/">Volver</button>
+              </mat-card-actions>
+            </mat-card-footer>
+          </mat-card>
+        </div>
+      }
+
+       @else{
+       <div>
+   
         <form [formGroup]="form" class="reg-form">
             <mat-form-field class="example-full-width">
                 <mat-label for="nombre">Nombre y apellido</mat-label>
                 <input id="nombre" type="text" matInput formControlName="nombre" placeholder="Jorge Luis Rodriguez">
             </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label for="edad">Edad</mat-label>
+                <input id="edad" type="number" matInput formControlName="edad" placeholder="18">
+              </mat-form-field>
               <mat-form-field class="example-full-width">
                 <mat-label for="nivel">Eficiencia y Categoria</mat-label>
                 <input id="nivel" type="text" matInput formControlName="nivel" placeholder="B Segunda">
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <mat-label for="nombre">Nombre y apellido</mat-label>
-                <input id="nombre" type="text" matInput formControlName="nombre" placeholder="Jorge Luis Rodriguez">
               </mat-form-field>
           <mat-form-field class="example-full-width">
             <mat-label for="email">Email</mat-label>
@@ -35,7 +97,7 @@
             <input id="confirmPass" type="password" matInput formControlName="confirmPass" placeholder="Reingresa tu contraseña">
           </mat-form-field>
         </form>
-      </mat-card-content>
+     
       <mat-card-actions>
         <section>
           <button mat-flat-button (click)="guardar()">Registrarme</button>
@@ -43,6 +105,10 @@
     
         <button mat-button routerLink="/">Volver</button>
       </mat-card-actions>
-    </mat-card>
+
     </div>
-    <router-outlet></router-outlet>
+  }
+</mat-card-content>
+  </mat-card>
+</div>
+<router-outlet></router-outlet>

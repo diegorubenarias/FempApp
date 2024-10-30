@@ -11,14 +11,26 @@ export class RegistroService {
   private apURL = environment.SERVER_API;
   private http = inject(HttpClient);
 
-  guardar(nombre: string, edad: number, email: string, 
-    password: string, nivel: string ){
-    return this.http.post(`${this.apURL}/usuario`,{
+  guardar(nombre: string, edad: number, nivel: string, email: string, 
+    password: string ){
+    return this.http.post(`${this.apURL}/register`,{
       nombre,
       edad,
-      password: password,
-      usuario: email,
       nivel,
+      password: password,
+      email: email,
     });
+  }
+
+  guardarFast(email: string, password: string, dni: string ){
+    return this.http.post(`${this.apURL}/register`,{
+      email: email,
+      password: password,
+      dni: dni
+    });
+  }
+
+  buscar(dni: string) {
+    return this.http.get(`${this.apURL}/padron/${dni}`);
   }
 }
