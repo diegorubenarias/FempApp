@@ -7,12 +7,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../services/login.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { RegistroService } from '../../services/registro.service';
+import { CommonModule } from '@angular/common';
+
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
+    CommonModule,
     MatCardModule,
     FormsModule,
     MatFormFieldModule,
@@ -20,7 +23,7 @@ import { RegistroService } from '../../services/registro.service';
     ReactiveFormsModule,
     MatButtonModule,
     RouterOutlet,
-    RouterLink,
+    RouterLink,    
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -46,6 +49,7 @@ export class LoginComponent {
     this.loginService.login(
       this.form?.get('email')?.value, 
       this.form?.get('password')?.value)
+      
       .subscribe({
         next: (res) => {
           // token

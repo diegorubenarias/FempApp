@@ -5,27 +5,22 @@ import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
-export class RegistroService {
- 
+export class RegistroFastService {
 
   private apURL = environment.SERVER_API;
   private http = inject(HttpClient);
 
-  
+  constructor() { }
+
   buscar(dni: string) {
     return this.http.get(`${this.apURL}/padron/${dni}`);
   }
 
-  guardar(nombre: string, edad: number, nivel: string, email: string, 
-    password: string,  documentoN: string ){
+  guardarFast(email: string, password: string, dni: string ){
     return this.http.post(`${this.apURL}/register`,{
-      nombre,
-      edad,
-      nivel,
       email: email,
       password: password,
-      dni: documentoN
+      dni: dni
     });
   }
-
 }
