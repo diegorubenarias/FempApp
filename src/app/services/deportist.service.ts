@@ -29,7 +29,6 @@ export class DeportistService {
       return this.http.get<Deportist[]>(`${this.apURL}/padron`)
         .pipe(
           tap(data => {
-            // Verifica los datos antes de asignarlos
             console.log('Datos recibidos:', data);
           }),
           catchError(error => {
