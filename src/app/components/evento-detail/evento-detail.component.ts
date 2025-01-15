@@ -23,15 +23,15 @@ export class EventoDetailComponent implements OnInit {
   
 
   mostrarEventoById(id: number){
-    this.eventServ.buscarEventoPorId(id).subscribe(
-      (evento: Evento) => {
-        this.evento = evento;
-        console.log(this.evento);
+    this.eventServ.getEventoById(id).subscribe({
+      next: (evento: Evento) => {
+      this.evento = evento;
+      console.log(this.evento);
       },
-      (error: any) => {
-        console.error('Error fetching event:', error);
+      error: (error: any) => {
+      console.error('Error fetching event:', error);
       }
-    );
+    });
   }
 
   
