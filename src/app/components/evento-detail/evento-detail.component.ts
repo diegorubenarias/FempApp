@@ -23,15 +23,17 @@ export class EventoDetailComponent implements OnInit {
   
 
   mostrarEventoById(id: number){
-    this.eventServ.getEventoById(id)
-    .subscribe(this.evento => {
-      if (Array.isArray(evento)) {
-        this.dataSource.data = this.evento;
-        this.dataSource.filter = this.filterValue;
-      } else {
-        console.error('Los datos recibidos no son un arreglo de Deportist');
+    this.eventServ.buscarEventoPorId(id).subscribe(
+      (evento: Evento) => {
+        this.evento = evento;
+        console.log(this.evento);
+      },
+      (error: any) => {
+        console.error('Error fetching event:', error);
       }
-    });
+    );
   }
+
+  
 
 }

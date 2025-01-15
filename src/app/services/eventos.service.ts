@@ -25,18 +25,14 @@ export class EventosService {
             );
   }
 
-  getEventoById(id: number):Observable<Evento[]> {
-    return this.http.get<Evento[]>(`${this.apURL}/evento/id`)
-    .pipe(
-      tap(data => {
-        console.log('Datos recibidos:', data);
-      }),
-      catchError(error => {
-        console.error('Error al obtener deportistas:', error);
-        return of([]);
-      })
-    );
+  getEventoById(id: number): Observable<Evento[]> {
+    return this.http.get<Evento[]>(`${this.apURL}/evento/id`);
+    
   }
+
+  addEvento(evento: Evento): Observable<Evento> {
+    return this.http.post<Evento>(`${this.apURL}/evento`, evento);
+  } 
 
 }
 
