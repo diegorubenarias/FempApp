@@ -17,7 +17,7 @@ export const routes: Routes = [
     { path: 'registroFast', component: RegistroFastComponent },
     { path: 'deportist', component: DeportistComponent },
     { path: '', component: DashboardProfComponent },
-    { path: 'eventos/:id', component: EventoDetailComponent },
+    { path: 'evento-detail', component: EventoDetailComponent },
     { path: 'elementos/:id', component: ElementosDetailComponent }
 
 ];

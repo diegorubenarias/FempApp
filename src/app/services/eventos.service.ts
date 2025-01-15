@@ -26,7 +26,7 @@ export class EventosService {
   }
 
   getEventoById(id: number): Observable<Evento[]> {
-    return this.http.get<Evento[]>(`${this.apURL}/evento/id`);
+    return this.http.get<Evento[]>(`${this.apURL}/eventos?id=${id}`);
     
   }
 
